@@ -13,7 +13,8 @@ mysql_select_db("informatika",$conn);
 echo "Nama	: $nama <br>";
 echo "Email	: $email <br>";
 echo "Komentar : $komentar <br>";
-$sqlstr="insert into bukutamu (nama,email,komentar) values  ('$nama','$email','$komentar')";
+$sqlstr="insert into bukutamu (nama,email,komentar)
+values  ('$nama','$email','$komentar')";
 $hasil = mysql_query($sqlstr,$conn);
 echo "Simpan bukutamu berhasil dilakukan";
 ?>

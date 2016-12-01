@@ -1,0 +1,112 @@
+Syntax yang ada pada routes.php
+
+
+<?php
+Route::get('/', function() 
+{
+    return View::make('Hallo');
+});
+?>
+
+
+<?php
+Route::get('/', function() 
+{
+    return 'Ini adalah contoh halaman Tia Fitriyah';
+});
+
+
+<html>
+<head>
+<title>link</title>
+</head>
+<body>
+<a href="laravel/public/">
+http://localhost/laravel/public/</a>
+</body>
+</html>
+
+
+<?php
+Route::get('profile/{nama}',function($nama)
+{
+return'Profile Nama: '.$nama;
+});
+
+
+
+<?php
+Route::get('profile/{id}/{nama}',function($id, $nama)
+{
+return'profile ID / Nama : '.$id.'/'.$nama;
+});
+
+
+<?php
+Route::get('profile/{nama?}',function($nama = null)
+{
+return $nama;
+});
+
+
+<?php
+Route::get('profile/{nama?}',function($nama = 'Tia Fitriyah')
+{
+return $nama;
+});
+
+
+<?php
+Route::get('bukutamu/{form}',function($form)
+{
+return'nama: '.$form;
+return'alamat: '.$form;
+});
+
+
+<HTML>
+<HEAD>
+<title>Buku Tamu</title>
+</HEAD>
+<BODY>
+<h1>Buku Tamu untuk database informatika</h1>
+<form action="prosesTambah.php" method="post">
+Nama	: <input type="text" name="nama" size="35" maxlength="50"> <br>
+Email	: <input type="text" name="email" size="35" maxlength="50"> <br>
+Komentar : <textarea name="komentar" rows="5" cols="30"></textarea> <br>
+<input type="submit" value="Simpan">
+<input type="reset" value="Reset">
+</form>
+</BODY>
+</HTML>
+
+
+<?php
+$conn = mysql_connect("localhost","root","");
+mysql_select_db("informatika",$conn);
+$hasil = mysql_query("select * from bukutamu",$conn);
+$jumlah = mysql_num_rows($hasil);
+echo "Daftar Pengunjung";
+echo "<br>";
+echo "Jumlah pengunjung : $jumlah";
+$a=1;
+while($baris=mysql_fetch_array($hasil))
+{
+echo "<br>"; echo $a; echo "<br>";
+echo "Nama : "; echo $baris[0]; echo "<br>";
+echo "Email : "; echo $baris[1]; echo "<br>";
+echo "Komentar : "; echo $baris[2];
+$a++;
+}
+?>
+
+
+<?php
+Route::get('link4/', function() 
+{
+    return '<script language="javascript">
+   window.location.href="http://unsil.ac.id";
+</script>';
+});
+
+
